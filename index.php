@@ -27,7 +27,8 @@
       </header>
 
       <section class="mb-5">
-        <form action="./insert.php" method="post">
+          <!--novalidate一写上，就不会存在浏览器自动去validate哪个位置没有填上了，如果没有这个novalidate，会强迫填写-->
+        <form action="./insert.php" method="post" novalidate>
           <div class="row">
             <div class="col">
               <div class="form-group">
