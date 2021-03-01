@@ -1,9 +1,5 @@
 <?php
-
-
-   
-
-    //validating empty fields
+   //validating empty fields
 
     $required_fields = [
         'first_name',
@@ -27,7 +23,8 @@
             exit;
         }
     }
-    //check the $_POST['email']是不是valid email address
+    //check the $_POST['email']是不是valid email address .filter_var如果是正确的，就返回sanitizate的值，如果是错误的，
+    //那就直接返回false
     if(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
         echo"<br> The Email isn't in a valid format, Please correct it<br/>";
         exit;
@@ -52,15 +49,16 @@
     foreach ($required_fields as $field){
         //三等于，是完全比较，不仅比较值，还比较值的类型,这里我们skip email address
         if($field ==="email") continue;
-
+        //to lower case
         $_POST[$field] = strtolower($_POST[$field]);
+        // 首字母大写
         $_POST[$field] = ucwords($_POST[$field]);
 
     }
 
     var_dump($_POST);
 
-    //connect and insert into our database
+    //connect and insert into our database，这里include了_connect的page，并且调用了里面的function
     include ('_connect.php');
     $conn = connect();
 
