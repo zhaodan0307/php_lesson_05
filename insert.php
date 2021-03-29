@@ -90,7 +90,8 @@
             :postal_code
                       
             )";
-    //prepare 准备执行一个sql语句，并且返回一个PODstatement对象
+    //prepare 准备执行一个sql语句，并且返回一个PODstatement对象，
+    //bindParam是PDOStatement的一个方法，用于在PDO操作中绑定占位符的内容，进行替换，是PDO安全性的一大保障。
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':first_name',$_POST['first_name'],PDO::PARAM_STR);
     $stmt->bindParam(':last_name',$_POST['last_name'],PDO::PARAM_STR);
